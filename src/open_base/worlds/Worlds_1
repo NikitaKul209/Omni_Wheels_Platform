@@ -1,0 +1,2605 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='open_base'>
+      <link name='origin_link'>
+        <inertial>
+          <pose>0 0 0.021177 0 -0 0</pose>
+          <mass>0.0846294</mass>
+          <inertia>
+            <ixx>3.0279e-05</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>3.0279e-05</iyy>
+            <iyz>0</iyz>
+            <izz>4.91616e-05</izz>
+          </inertia>
+        </inertial>
+        <collision name='origin_link_fixed_joint_lump__base_link_collision'>
+          <pose>0 0 0.01905 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/base.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='origin_link_fixed_joint_lump__five_sonar_link_collision_1'>
+          <pose>0 0.04 0.04905 0 -0 1.5708</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='origin_link_fixed_joint_lump__for_sonar_link_collision_2'>
+          <pose>-0.034641 -0.02 0.04905 0 0 -2.61799</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='origin_link_fixed_joint_lump__one_sonar_link_collision_3'>
+          <pose>0 -0.04 0.04905 0 0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='origin_link_fixed_joint_lump__six_sonar_link_collision_4'>
+          <pose>0.034641 -0.02 0.04905 0 0 -0.523599</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='origin_link_fixed_joint_lump__three_sonar_link_collision_5'>
+          <pose>0.034641 0.02 0.04905 0 -0 0.523599</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='origin_link_fixed_joint_lump__two_sonar_link_collision_6'>
+          <pose>-0.034641 0.02 0.04905 0 -0 2.61799</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='origin_link_fixed_joint_lump__base_link_visual'>
+          <pose>0 0 0.01905 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/base.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='origin_link_fixed_joint_lump__five_sonar_link_visual_1'>
+          <pose>0 0.04 0.04905 0 -0 1.5708</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/opt/ros/noetic/share/hector_sensors_description/meshes/sonar_sensor/max_sonar_ez4.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='origin_link_fixed_joint_lump__for_sonar_link_visual_2'>
+          <pose>-0.034641 -0.02 0.04905 0 0 -2.61799</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/opt/ros/noetic/share/hector_sensors_description/meshes/sonar_sensor/max_sonar_ez4.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='origin_link_fixed_joint_lump__one_sonar_link_visual_3'>
+          <pose>0 -0.04 0.04905 0 0 -1.5708</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/opt/ros/noetic/share/hector_sensors_description/meshes/sonar_sensor/max_sonar_ez4.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='origin_link_fixed_joint_lump__six_sonar_link_visual_4'>
+          <pose>0.034641 -0.02 0.04905 0 0 -0.523599</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/opt/ros/noetic/share/hector_sensors_description/meshes/sonar_sensor/max_sonar_ez4.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='origin_link_fixed_joint_lump__three_sonar_link_visual_5'>
+          <pose>0.034641 0.02 0.04905 0 -0 0.523599</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/opt/ros/noetic/share/hector_sensors_description/meshes/sonar_sensor/max_sonar_ez4.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='origin_link_fixed_joint_lump__two_sonar_link_visual_6'>
+          <pose>-0.034641 0.02 0.04905 0 -0 2.61799</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/opt/ros/noetic/share/hector_sensors_description/meshes/sonar_sensor/max_sonar_ez4.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <sensor name='five_sonar' type='ray'>
+          <always_on>1</always_on>
+          <update_rate>5</update_rate>
+          <visualize>0</visualize>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>1</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.05</min_angle>
+                <max_angle>0.05</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.05</min_angle>
+                <max_angle>0.05</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.1</min>
+              <max>0.8</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <plugin name='gazebo_ros_five_sonar_controller' filename='libhector_gazebo_ros_sonar.so'>
+            <gaussianNoise>0.005</gaussianNoise>
+            <topicName>five_sonar</topicName>
+            <frameId>five_sonar_link</frameId>
+            <robotNamespace>/open_base/</robotNamespace>
+          </plugin>
+          <pose>0 0.04 0.04905 0 -0 1.5708</pose>
+        </sensor>
+        <sensor name='for_sonar' type='ray'>
+          <always_on>1</always_on>
+          <update_rate>5</update_rate>
+          <visualize>0</visualize>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>1</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.05</min_angle>
+                <max_angle>0.05</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.05</min_angle>
+                <max_angle>0.05</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.1</min>
+              <max>0.8</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <plugin name='gazebo_ros_for_sonar_controller' filename='libhector_gazebo_ros_sonar.so'>
+            <gaussianNoise>0.005</gaussianNoise>
+            <topicName>for_sonar</topicName>
+            <frameId>for_sonar_link</frameId>
+            <robotNamespace>/open_base/</robotNamespace>
+          </plugin>
+          <pose>-0.034641 -0.02 0.04905 0 -0 -2.61799</pose>
+        </sensor>
+        <sensor name='one_sonar' type='ray'>
+          <always_on>1</always_on>
+          <update_rate>5</update_rate>
+          <visualize>0</visualize>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>1</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.05</min_angle>
+                <max_angle>0.05</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.05</min_angle>
+                <max_angle>0.05</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.1</min>
+              <max>0.8</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <plugin name='gazebo_ros_one_sonar_controller' filename='libhector_gazebo_ros_sonar.so'>
+            <gaussianNoise>0.005</gaussianNoise>
+            <topicName>one_sonar</topicName>
+            <frameId>one_sonar_link</frameId>
+            <robotNamespace>/open_base/</robotNamespace>
+          </plugin>
+          <pose>0 -0.04 0.04905 0 -0 -1.5708</pose>
+        </sensor>
+        <sensor name='six_sonar' type='ray'>
+          <always_on>1</always_on>
+          <update_rate>5</update_rate>
+          <visualize>0</visualize>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>1</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.05</min_angle>
+                <max_angle>0.05</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.05</min_angle>
+                <max_angle>0.05</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.1</min>
+              <max>0.8</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <plugin name='gazebo_ros_six_sonar_controller' filename='libhector_gazebo_ros_sonar.so'>
+            <gaussianNoise>0.005</gaussianNoise>
+            <topicName>six_sonar</topicName>
+            <frameId>six_sonar_link</frameId>
+            <robotNamespace>/open_base/</robotNamespace>
+          </plugin>
+          <pose>0.034641 -0.02 0.04905 0 -0 -0.523599</pose>
+        </sensor>
+        <sensor name='three_sonar' type='ray'>
+          <always_on>1</always_on>
+          <update_rate>5</update_rate>
+          <visualize>0</visualize>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>1</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.05</min_angle>
+                <max_angle>0.05</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.05</min_angle>
+                <max_angle>0.05</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.1</min>
+              <max>0.8</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <plugin name='gazebo_ros_three_sonar_controller' filename='libhector_gazebo_ros_sonar.so'>
+            <gaussianNoise>0.005</gaussianNoise>
+            <topicName>three_sonar</topicName>
+            <frameId>three_sonar_link</frameId>
+            <robotNamespace>/open_base/</robotNamespace>
+          </plugin>
+          <pose>0.034641 0.02 0.04905 0 -0 0.523599</pose>
+        </sensor>
+        <sensor name='two_sonar' type='ray'>
+          <always_on>1</always_on>
+          <update_rate>5</update_rate>
+          <visualize>0</visualize>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>1</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.05</min_angle>
+                <max_angle>0.05</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>1</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.05</min_angle>
+                <max_angle>0.05</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.1</min>
+              <max>0.8</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+          <plugin name='gazebo_ros_two_sonar_controller' filename='libhector_gazebo_ros_sonar.so'>
+            <gaussianNoise>0.005</gaussianNoise>
+            <topicName>two_sonar</topicName>
+            <frameId>two_sonar_link</frameId>
+            <robotNamespace>/open_base/</robotNamespace>
+          </plugin>
+          <pose>-0.034641 0.02 0.04905 0 -0 2.61799</pose>
+        </sensor>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='rim_back_joint' type='revolute'>
+        <pose relative_to='origin_link'>0 -0.04 0.01905 1.5708 -0 3.14159</pose>
+        <parent>origin_link</parent>
+        <child>rim_back_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='rim_back_link'>
+        <pose relative_to='rim_back_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 -0.000343 0 -0 0</pose>
+          <mass>0.00835758</mass>
+          <inertia>
+            <ixx>6.63684e-07</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>6.63684e-07</iyy>
+            <iyz>0</iyz>
+            <izz>9.40333e-07</izz>
+          </inertia>
+        </inertial>
+        <collision name='rim_back_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/rim.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='rim_back_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/rim.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_e_rim_back_joint' type='revolute'>
+        <pose relative_to='rim_back_link'>0.01355 0 0.0055 -1.5708 0 0</pose>
+        <parent>rim_back_link</parent>
+        <child>roller_e_rim_back_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_e_rim_back_link'>
+        <pose relative_to='roller_e_rim_back_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_e_rim_back_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_e_rim_back_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_n_rim_back_joint' type='revolute'>
+        <pose relative_to='rim_back_link'>0 0.01355 0.0055 -1.5708 0 1.5708</pose>
+        <parent>rim_back_link</parent>
+        <child>roller_n_rim_back_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_n_rim_back_link'>
+        <pose relative_to='roller_n_rim_back_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_n_rim_back_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_n_rim_back_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_ne_rim_back_joint' type='revolute'>
+        <pose relative_to='rim_back_link'>0.009581 0.009581 -0.0055 -1.5708 -0 0.785398</pose>
+        <parent>rim_back_link</parent>
+        <child>roller_ne_rim_back_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_ne_rim_back_link'>
+        <pose relative_to='roller_ne_rim_back_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_ne_rim_back_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_ne_rim_back_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_nw_rim_back_joint' type='revolute'>
+        <pose relative_to='rim_back_link'>-0.009581 0.009581 -0.0055 -1.5708 -0 2.35619</pose>
+        <parent>rim_back_link</parent>
+        <child>roller_nw_rim_back_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_nw_rim_back_link'>
+        <pose relative_to='roller_nw_rim_back_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_nw_rim_back_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_nw_rim_back_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_s_rim_back_joint' type='revolute'>
+        <pose relative_to='rim_back_link'>0 -0.01355 0.0055 -1.5708 -0 -1.5708</pose>
+        <parent>rim_back_link</parent>
+        <child>roller_s_rim_back_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_s_rim_back_link'>
+        <pose relative_to='roller_s_rim_back_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_s_rim_back_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_s_rim_back_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_se_rim_back_joint' type='revolute'>
+        <pose relative_to='rim_back_link'>0.009581 -0.009581 -0.0055 -1.5708 0 -0.785398</pose>
+        <parent>rim_back_link</parent>
+        <child>roller_se_rim_back_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_se_rim_back_link'>
+        <pose relative_to='roller_se_rim_back_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_se_rim_back_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_se_rim_back_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_sw_rim_back_joint' type='revolute'>
+        <pose relative_to='rim_back_link'>-0.009581 -0.009581 -0.0055 -1.5708 -0 -2.35619</pose>
+        <parent>rim_back_link</parent>
+        <child>roller_sw_rim_back_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_sw_rim_back_link'>
+        <pose relative_to='roller_sw_rim_back_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_sw_rim_back_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_sw_rim_back_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_w_rim_back_joint' type='revolute'>
+        <pose relative_to='rim_back_link'>-0.01355 0 0.0055 -1.5708 -0 3.14159</pose>
+        <parent>rim_back_link</parent>
+        <child>roller_w_rim_back_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_w_rim_back_link'>
+        <pose relative_to='roller_w_rim_back_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_w_rim_back_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_w_rim_back_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='rim_left_joint' type='revolute'>
+        <pose relative_to='origin_link'>-0.034641 0.02 0.01905 1.5708 -0 1.0472</pose>
+        <parent>origin_link</parent>
+        <child>rim_left_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='rim_left_link'>
+        <pose relative_to='rim_left_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 -0.000343 0 -0 0</pose>
+          <mass>0.00835758</mass>
+          <inertia>
+            <ixx>6.63684e-07</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>6.63684e-07</iyy>
+            <iyz>0</iyz>
+            <izz>9.40333e-07</izz>
+          </inertia>
+        </inertial>
+        <collision name='rim_left_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/rim.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='rim_left_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/rim.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_e_rim_left_joint' type='revolute'>
+        <pose relative_to='rim_left_link'>0.01355 0 0.0055 -1.5708 0 0</pose>
+        <parent>rim_left_link</parent>
+        <child>roller_e_rim_left_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_e_rim_left_link'>
+        <pose relative_to='roller_e_rim_left_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_e_rim_left_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_e_rim_left_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_n_rim_left_joint' type='revolute'>
+        <pose relative_to='rim_left_link'>0 0.01355 0.0055 -1.5708 0 1.5708</pose>
+        <parent>rim_left_link</parent>
+        <child>roller_n_rim_left_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_n_rim_left_link'>
+        <pose relative_to='roller_n_rim_left_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_n_rim_left_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_n_rim_left_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_ne_rim_left_joint' type='revolute'>
+        <pose relative_to='rim_left_link'>0.009581 0.009581 -0.0055 -1.5708 -0 0.785398</pose>
+        <parent>rim_left_link</parent>
+        <child>roller_ne_rim_left_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_ne_rim_left_link'>
+        <pose relative_to='roller_ne_rim_left_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_ne_rim_left_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_ne_rim_left_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_nw_rim_left_joint' type='revolute'>
+        <pose relative_to='rim_left_link'>-0.009581 0.009581 -0.0055 -1.5708 -0 2.35619</pose>
+        <parent>rim_left_link</parent>
+        <child>roller_nw_rim_left_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_nw_rim_left_link'>
+        <pose relative_to='roller_nw_rim_left_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_nw_rim_left_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_nw_rim_left_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_s_rim_left_joint' type='revolute'>
+        <pose relative_to='rim_left_link'>0 -0.01355 0.0055 -1.5708 -0 -1.5708</pose>
+        <parent>rim_left_link</parent>
+        <child>roller_s_rim_left_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_s_rim_left_link'>
+        <pose relative_to='roller_s_rim_left_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_s_rim_left_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_s_rim_left_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_se_rim_left_joint' type='revolute'>
+        <pose relative_to='rim_left_link'>0.009581 -0.009581 -0.0055 -1.5708 0 -0.785398</pose>
+        <parent>rim_left_link</parent>
+        <child>roller_se_rim_left_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_se_rim_left_link'>
+        <pose relative_to='roller_se_rim_left_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_se_rim_left_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_se_rim_left_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_sw_rim_left_joint' type='revolute'>
+        <pose relative_to='rim_left_link'>-0.009581 -0.009581 -0.0055 -1.5708 -0 -2.35619</pose>
+        <parent>rim_left_link</parent>
+        <child>roller_sw_rim_left_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_sw_rim_left_link'>
+        <pose relative_to='roller_sw_rim_left_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_sw_rim_left_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_sw_rim_left_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_w_rim_left_joint' type='revolute'>
+        <pose relative_to='rim_left_link'>-0.01355 0 0.0055 -1.5708 -0 3.14159</pose>
+        <parent>rim_left_link</parent>
+        <child>roller_w_rim_left_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_w_rim_left_link'>
+        <pose relative_to='roller_w_rim_left_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_w_rim_left_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_w_rim_left_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='rim_right_joint' type='revolute'>
+        <pose relative_to='origin_link'>0.034641 0.02 0.01905 1.5708 -0 -1.0472</pose>
+        <parent>origin_link</parent>
+        <child>rim_right_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='rim_right_link'>
+        <pose relative_to='rim_right_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 -0.000343 0 -0 0</pose>
+          <mass>0.00835758</mass>
+          <inertia>
+            <ixx>6.63684e-07</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>6.63684e-07</iyy>
+            <iyz>0</iyz>
+            <izz>9.40333e-07</izz>
+          </inertia>
+        </inertial>
+        <collision name='rim_right_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/rim.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='rim_right_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/rim.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_e_rim_right_joint' type='revolute'>
+        <pose relative_to='rim_right_link'>0.01355 0 0.0055 -1.5708 0 0</pose>
+        <parent>rim_right_link</parent>
+        <child>roller_e_rim_right_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_e_rim_right_link'>
+        <pose relative_to='roller_e_rim_right_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_e_rim_right_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_e_rim_right_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_n_rim_right_joint' type='revolute'>
+        <pose relative_to='rim_right_link'>0 0.01355 0.0055 -1.5708 0 1.5708</pose>
+        <parent>rim_right_link</parent>
+        <child>roller_n_rim_right_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_n_rim_right_link'>
+        <pose relative_to='roller_n_rim_right_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_n_rim_right_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_n_rim_right_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_ne_rim_right_joint' type='revolute'>
+        <pose relative_to='rim_right_link'>0.009581 0.009581 -0.0055 -1.5708 -0 0.785398</pose>
+        <parent>rim_right_link</parent>
+        <child>roller_ne_rim_right_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_ne_rim_right_link'>
+        <pose relative_to='roller_ne_rim_right_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_ne_rim_right_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_ne_rim_right_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_nw_rim_right_joint' type='revolute'>
+        <pose relative_to='rim_right_link'>-0.009581 0.009581 -0.0055 -1.5708 -0 2.35619</pose>
+        <parent>rim_right_link</parent>
+        <child>roller_nw_rim_right_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_nw_rim_right_link'>
+        <pose relative_to='roller_nw_rim_right_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_nw_rim_right_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_nw_rim_right_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_s_rim_right_joint' type='revolute'>
+        <pose relative_to='rim_right_link'>0 -0.01355 0.0055 -1.5708 -0 -1.5708</pose>
+        <parent>rim_right_link</parent>
+        <child>roller_s_rim_right_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_s_rim_right_link'>
+        <pose relative_to='roller_s_rim_right_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_s_rim_right_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_s_rim_right_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_se_rim_right_joint' type='revolute'>
+        <pose relative_to='rim_right_link'>0.009581 -0.009581 -0.0055 -1.5708 0 -0.785398</pose>
+        <parent>rim_right_link</parent>
+        <child>roller_se_rim_right_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_se_rim_right_link'>
+        <pose relative_to='roller_se_rim_right_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_se_rim_right_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_se_rim_right_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_sw_rim_right_joint' type='revolute'>
+        <pose relative_to='rim_right_link'>-0.009581 -0.009581 -0.0055 -1.5708 -0 -2.35619</pose>
+        <parent>rim_right_link</parent>
+        <child>roller_sw_rim_right_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_sw_rim_right_link'>
+        <pose relative_to='roller_sw_rim_right_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_sw_rim_right_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_sw_rim_right_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='roller_w_rim_right_joint' type='revolute'>
+        <pose relative_to='rim_right_link'>-0.01355 0 0.0055 -1.5708 -0 3.14159</pose>
+        <parent>rim_right_link</parent>
+        <child>roller_w_rim_right_link</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='roller_w_rim_right_link'>
+        <pose relative_to='roller_w_rim_right_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.00113845</mass>
+          <inertia>
+            <ixx>2.53776e-08</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>2.53776e-08</iyy>
+            <iyz>0</iyz>
+            <izz>1.47666e-08</izz>
+          </inertia>
+        </inertial>
+        <collision name='roller_w_rim_right_link_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='roller_w_rim_right_link_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/nikita/omni_ws/src/open_base/mesh/roller.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <static>0</static>
+      <plugin name='gazebo_ros_control' filename='libgazebo_ros_control.so'>
+        <robotNamespace>/open_base</robotNamespace>
+      </plugin>
+      <pose>0 0 0 0 -0 0</pose>
+    </model>
+    <model name='unit_cylinder'>
+      <pose>-1.03278 0.349724 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.145833</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.145833</iyy>
+            <iyz>0</iyz>
+            <izz>0.125</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='unit_box'>
+      <pose>-0.308321 1.04373 0.5 0 -0 0</pose>
+      <link name='link'>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>1 1 1</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <name>Gazebo/Grey</name>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <state world_name='default'>
+      <sim_time>1868 110000000</sim_time>
+      <real_time>3933 582604669</real_time>
+      <wall_time>1648214879 627048855</wall_time>
+      <iterations>1868110</iterations>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='open_base'>
+        <pose>-0.01635 -0.009892 4e-06 0.000571 0.000633 -1.23943</pose>
+        <scale>1 1 1</scale>
+        <link name='origin_link'>
+          <pose>-0.01635 -0.009892 4e-06 0.000571 0.000633 -1.23943</pose>
+          <velocity>-0.128134 0.164618 -0.004723 0.077689 0.051205 -2.31836</velocity>
+          <acceleration>0.093903 -0.01159 -9.67519 2.99473 0.013341 -0.298955</acceleration>
+          <wrench>0.007947 -0.000981 -0.818806 0 -0 0</wrench>
+        </link>
+        <link name='rim_back_link'>
+          <pose>-0.054206 -0.022928 0.019033 1.56561 1.25981 1.89718</pose>
+          <velocity>0.082935 -0.464327 -0.003997 2.84511 1.02479 -2.26994</velocity>
+          <acceleration>10.3938 3.57598 -7.97471 -2.03435 1.11149 1.7051</acceleration>
+          <wrench>0.086867 0.029887 -0.066649 0 -0 0</wrench>
+        </link>
+        <link name='rim_left_link'>
+          <pose>-0.008708 0.029382 0.01909 -1.56977 0.456166 2.94975</pose>
+          <velocity>-0.775245 0.294942 -0.002464 -2.8786 -1.22742 -2.25717</velocity>
+          <acceleration>-2.56878 -11.0692 -14.1166 -1.10962 1.07945 2.9907</acceleration>
+          <wrench>-0.021469 -0.092512 -0.117981 0 -0 0</wrench>
+        </link>
+        <link name='rim_right_link'>
+          <pose>0.013845 -0.036176 0.019044 -1.43197 1.56053 0.99377</pose>
+          <velocity>0.311535 0.658537 -0.008169 -1.94011 -0.347077 -2.27719</velocity>
+          <acceleration>-8.0815 7.26532 -7.96281 0.656662 -0.040921 -1.74719</acceleration>
+          <wrench>-0.067542 0.060721 -0.06655 0 -0 0</wrench>
+        </link>
+        <link name='roller_e_rim_back_link'>
+          <pose>-0.050319 -0.017216 0.006129 1.26014 0.185361 -2.86817</pose>
+          <velocity>-0.104101 -0.113705 0.084776 2.48292 0.056929 -0.352881</velocity>
+          <acceleration>-10.777 29.8406 -5.13141 0.384909 0.319184 -2.9736</acceleration>
+          <wrench>-0.012269 0.033972 -0.005842 0 -0 0</wrench>
+        </link>
+        <link name='roller_e_rim_left_link'>
+          <pose>-0.021769 0.026311 0.013099 3.12194 -0.455702 -0.148231</pose>
+          <velocity>-0.471289 0.022928 -0.573435 1.02973 -0.734674 3.04417</velocity>
+          <acceleration>31.6217 -8.84672 -9.39962 2.81434 0.140438 1.28534</acceleration>
+          <wrench>0.036 -0.010072 -0.010701 0 -0 0</wrench>
+        </link>
+        <link name='roller_e_rim_right_link'>
+          <pose>0.009749 -0.032446 0.005481 -1.57806 1.13009 2.41623</pose>
+          <velocity>-0.001856 0.314567 -0.019619 3.13144 0.23452 0.400205</velocity>
+          <acceleration>10.7115 5.54432 4.29187 -0.090647 0.571878 -2.48662</acceleration>
+          <wrench>0.012195 0.006312 0.004886 0 -0 0</wrench>
+        </link>
+        <link name='roller_n_rim_back_link'>
+          <pose>-0.053214 -0.008917 0.023185 0.079891 0.301113 -0.982864</pose>
+          <velocity>-0.120788 -0.533296 0.292719 1.58374 -1.44345 -2.82152</velocity>
+          <acceleration>16.7963 -12.0844 14.9272 -0.06169 -1.42653 1.35324</acceleration>
+          <wrench>0.019122 -0.013757 0.016994 0 -0 0</wrench>
+        </link>
+        <link name='roller_n_rim_left_link'>
+          <pose>-0.003906 0.022811 0.00687 -0.894831 0.803343 -1.2359</pose>
+          <velocity>-0.103165 0.253366 0.255673 2.87635 0.042029 0.505655</velocity>
+          <acceleration>-5.00066 9.42319 16.635 -1.90473 0.255391 -1.77912</acceleration>
+          <wrench>-0.005693 0.010728 0.018938 0 -0 0</wrench>
+        </link>
+        <link name='roller_n_rim_right_link'>
+          <pose>0.000772 -0.042812 0.018901 0.003378 0.009602 -2.11473</pose>
+          <velocity>0.414413 0.434506 0.37069 -2.60311 -1.0146 1.57718</velocity>
+          <acceleration>3.99736 17.1315 -20.9046 -2.47391 -0.091694 0.145638</acceleration>
+          <wrench>0.004551 0.019503 -0.023799 0 -0 0</wrench>
+        </link>
+        <link name='roller_ne_rim_back_link'>
+          <pose>-0.063323 -0.013294 0.01283 0.052768 -0.472062 -1.34961</pose>
+          <velocity>-0.123037 -0.476032 0.270723 3.00996 -0.692825 0.315053</velocity>
+          <acceleration>6.55697 4.92999 18.0213 -2.48236 0.221794 1.57892</acceleration>
+          <wrench>0.007465 0.005613 0.020516 0 -0 0</wrench>
+        </link>
+        <link name='roller_ne_rim_left_link'>
+          <pose>-0.011989 0.035597 0.006225 2.3121 -1.07639 0.702922</pose>
+          <velocity>-0.305337 0.119256 -0.222913 -1.65641 -0.339471 2.96352</velocity>
+          <acceleration>20.3098 0.892828 9.42694 -1.20897 1.31293 0.995035</acceleration>
+          <wrench>0.023122 0.001016 0.010732 0 -0 0</wrench>
+        </link>
+        <link name='roller_ne_rim_right_link'>
+          <pose>0.011735 -0.046943 0.009341 0.318727 -0.739341 0.395781</pose>
+          <velocity>0.307024 0.419692 0.252341 0.299338 -1.31252 -0.306873</velocity>
+          <acceleration>11.3216 15.9914 -8.45091 2.70025 -0.138438 1.63612</acceleration>
+          <wrench>0.012889 0.018205 -0.009621 0 -0 0</wrench>
+        </link>
+        <link name='roller_nw_rim_back_link'>
+          <pose>-0.061455 -0.01886 0.031096 -1.09591 0.067993 -2.77721</pose>
+          <velocity>0.09943 -0.844771 0.141441 1.17408 0.288882 -0.862048</velocity>
+          <acceleration>28.3046 -18.6625 0.338697 -1.22845 -0.737116 0.934024</acceleration>
+          <wrench>0.032223 -0.021246 0.000386 0 -0 0</wrench>
+        </link>
+        <link name='roller_nw_rim_left_link'>
+          <pose>0.004987 0.032305 0.014681 -0.177118 -0.280019 -2.74227</pose>
+          <velocity>-0.607272 0.477292 0.586085 1.23934 1.48237 1.37194</velocity>
+          <acceleration>-27.9467 0.181852 3.23093 -0.769078 -1.4353 -0.482657</acceleration>
+          <wrench>-0.031816 0.000207 0.003678 0 -0 0</wrench>
+        </link>
+        <link name='roller_nw_rim_right_link'>
+          <pose>0.01164 -0.047127 0.028541 -0.692005 -0.380071 -1.13409</pose>
+          <velocity>0.668264 0.81401 0.264799 0.785632 1.4015 -1.24512</velocity>
+          <acceleration>-14.3114 15.8355 -25.0184 2.28339 -1.44851 -0.798149</acceleration>
+          <wrench>-0.016293 0.018028 -0.028482 0 -0 0</wrench>
+        </link>
+        <link name='roller_s_rim_back_link'>
+          <pose>-0.04479 -0.033357 0.014883 -3.13527 -0.311008 1.87684</pose>
+          <velocity>0.229119 -0.223074 -0.300198 2.77538 1.17125 -2.89952</velocity>
+          <acceleration>1.43181 16.9539 -28.4737 1.64871 -0.238954 1.83107</acceleration>
+          <wrench>0.00163 0.019301 -0.032416 0 -0 0</wrench>
+        </link>
+        <link name='roller_s_rim_left_link'>
+          <pose>-0.01563 0.025158 0.031307 2.0316 -0.118122 -1.82448</pose>
+          <velocity>-1.26467 0.297979 -0.263174 2.24969 0.154063 2.79558</velocity>
+          <acceleration>-0.446533 -27.8799 -43.109 -1.30953 -0.332522 -2.36841</acceleration>
+          <wrench>-0.000508 -0.03174 -0.049077 0 -0 0</wrench>
+        </link>
+        <link name='roller_s_rim_right_link'>
+          <pose>0.018612 -0.022316 0.019188 3.1341 -0.009908 2.05047</pose>
+          <velocity>0.088094 0.746355 -0.385776 -1.25648 1.23632 -2.09672</velocity>
+          <acceleration>-17.6264 -4.84327 4.38448 2.3762 -0.547026 0.799792</acceleration>
+          <wrench>-0.020067 -0.005514 0.004992 0 -0 0</wrench>
+        </link>
+        <link name='roller_se_rim_back_link'>
+          <pose>-0.057367 -0.030575 0.00696 2.55948 -0.992075 2.56793</pose>
+          <velocity>0.124322 -0.256592 -0.148556 1.00777 -0.172923 3.08182</velocity>
+          <acceleration>-4.51858 25.8672 -12.9213 -1.58608 -0.397744 -2.63709</acceleration>
+          <wrench>-0.005144 0.029449 -0.01471 0 -0 0</wrench>
+        </link>
+        <link name='roller_se_rim_left_link'>
+          <pose>-0.020299 0.037264 0.023502 2.84596 0.146354 -1.31815</pose>
+          <velocity>-1.1216 0.14893 -0.589306 -1.84972 -1.09429 -0.125555</velocity>
+          <acceleration>22.3007 -25.0285 -32.8978 2.98918 1.26653 2.70207</acceleration>
+          <wrench>0.025388 -0.028494 -0.037452 0 -0 0</wrench>
+        </link>
+        <link name='roller_se_rim_right_link'>
+          <pose>0.024353 -0.032448 0.009543 3.13493 0.776909 0.836633</pose>
+          <velocity>0.075363 0.639444 -0.282128 0.493156 1.3466 1.12979</velocity>
+          <acceleration>-3.73937 0.599178 9.34778 0.44193 0.450044 0.075262</acceleration>
+          <wrench>-0.004257 0.000682 0.010642 0 -0 0</wrench>
+        </link>
+        <link name='roller_sw_rim_back_link'>
+          <pose>-0.055499 -0.036141 0.025227 2.84334 -0.374503 -0.537876</pose>
+          <velocity>0.346861 -0.625489 -0.277959 2.75382 1.23163 -1.77107</velocity>
+          <acceleration>17.4448 1.52344 -31.218 -2.4445 -0.380099 -2.08164</acceleration>
+          <wrench>0.01986 0.001734 -0.03554 0 -0 0</wrench>
+        </link>
+        <link name='roller_sw_rim_left_link'>
+          <pose>-0.003315 0.03397 0.031968 1.22018 0.353952 -1.89315</pose>
+          <velocity>-1.42541 0.50729 0.217167 0.370978 -0.837088 -0.338294</velocity>
+          <acceleration>-25.505 -25.8712 -38.477 -2.5924 0.81281 1.34357</acceleration>
+          <wrench>-0.029036 -0.029453 -0.043804 0 -0 0</wrench>
+        </link>
+        <link name='roller_sw_rim_right_link'>
+          <pose>0.024255 -0.032635 0.028744 -2.35537 -0.154361 -0.554552</pose>
+          <velocity>0.437526 1.0345 -0.270056 -0.578573 -0.226229 -0.906291</velocity>
+          <acceleration>-29.6286 0.273218 -7.13134 0.559724 -0.191696 -1.54449</acceleration>
+          <wrench>-0.033731 0.000311 -0.008119 0 -0 0</wrench>
+        </link>
+        <link name='roller_w_rim_back_link'>
+          <pose>-0.047681 -0.025073 0.031951 2.13325 -0.959267 -0.144832</pose>
+          <velocity>0.211569 -0.639103 -0.095241 -0.885661 0.440013 1.43964</velocity>
+          <acceleration>24.6957 -15.1023 -19.6993 -3.08657 0.607775 2.08691</acceleration>
+          <wrench>0.028115 -0.017193 -0.022427 0 -0 0</wrench>
+        </link>
+        <link name='roller_w_rim_left_link'>
+          <pose>0.00225 0.021651 0.025069 -0.151137 -0.432699 0.142717</pose>
+          <velocity>-0.901014 0.530263 0.567985 -2.69075 0.841136 -0.572637</velocity>
+          <acceleration>-35.9268 -10.0942 -17.555 2.88117 0.486065 -0.56532</acceleration>
+          <wrench>-0.040901 -0.011492 -0.019986 0 -0 0</wrench>
+        </link>
+        <link name='roller_w_rim_right_link'>
+          <pose>0.009622 -0.032696 0.032622 -1.55262 0.816372 -0.69859</pose>
+          <velocity>0.507241 0.869752 0.000919 0.974801 -1.50114 2.34154</velocity>
+          <acceleration>-25.1634 5.95922 -19.8925 2.04801 0.63508 0.752989</acceleration>
+          <wrench>-0.028647 0.006784 -0.022647 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_box'>
+        <pose>-0.233622 1.11205 0.499995 0 1e-05 0.022594</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.233622 1.11205 0.499995 0 1e-05 0.022594</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0.010742 -0.006167 -9.78234 0.012413 0.021478 3.7e-05</acceleration>
+          <wrench>0.010742 -0.006167 -9.78234 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='unit_cylinder'>
+        <pose>-1.10735 0.281534 0.499997 1e-06 -1e-06 -0.011348</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-1.10735 0.281534 0.499997 1e-06 -1e-06 -0.011348</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 -9.8 0 -0 0</acceleration>
+          <wrench>0 0 -9.8 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>3.04996 -1.38173 0.365638 0 0.275643 2.3562</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

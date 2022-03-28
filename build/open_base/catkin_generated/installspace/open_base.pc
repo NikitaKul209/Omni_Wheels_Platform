@@ -1,0 +1,8 @@
+prefix=/home/nikita/omni_ws/install
+
+Name: open_base
+Description: Description of open_base
+Version: 0.0.0
+Cflags: -I${prefix}/include -I/usr/include/eigen3 -I/usr/share/orocos_kdl/cmake/../../../include
+Libs: -L${prefix}/lib -lopen_base -lorocos-kdl
+Requires: roscpp sensor_msgs message_runtime kdl_parser

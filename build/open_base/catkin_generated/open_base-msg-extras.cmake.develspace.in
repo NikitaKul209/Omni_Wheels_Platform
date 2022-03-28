@@ -1,0 +1,2 @@
+set(open_base_MESSAGE_FILES "/home/nikita/omni_ws/src/open_base/msg/Velocity.msg;/home/nikita/omni_ws/src/open_base/msg/MovementBezier.msg;/home/nikita/omni_ws/src/open_base/msg/MovementGeneric.msg;/home/nikita/omni_ws/src/open_base/msg/Movement.msg")
+set(open_base_SERVICE_FILES "/home/nikita/omni_ws/src/open_base/srv/FrameToFrame.srv;/home/nikita/omni_ws/src/open_base/srv/KinematicsForward.srv;/home/nikita/omni_ws/src/open_base/srv/KinematicsInverse.srv")
