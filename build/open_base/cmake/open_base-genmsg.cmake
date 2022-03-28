@@ -34,7 +34,7 @@ add_custom_target(_open_base_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/nikita/omni_ws/src/open_base/msg/Movement.msg" NAME_WE)
 add_custom_target(_open_base_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "open_base" "/home/nikita/omni_ws/src/open_base/msg/Movement.msg" "open_base/MovementBezier:geometry_msgs/Pose2D:open_base/MovementGeneric:open_base/Velocity"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "open_base" "/home/nikita/omni_ws/src/open_base/msg/Movement.msg" "open_base/MovementGeneric:open_base/Velocity:geometry_msgs/Pose2D:open_base/MovementBezier"
 )
 
 get_filename_component(_filename "/home/nikita/omni_ws/src/open_base/srv/FrameToFrame.srv" NAME_WE)
@@ -44,7 +44,7 @@ add_custom_target(_open_base_generate_messages_check_deps_${_filename}
 
 get_filename_component(_filename "/home/nikita/omni_ws/src/open_base/srv/KinematicsForward.srv" NAME_WE)
 add_custom_target(_open_base_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "open_base" "/home/nikita/omni_ws/src/open_base/srv/KinematicsForward.srv" "geometry_msgs/Pose2D:open_base/Velocity"
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "open_base" "/home/nikita/omni_ws/src/open_base/srv/KinematicsForward.srv" "open_base/Velocity:geometry_msgs/Pose2D"
 )
 
 get_filename_component(_filename "/home/nikita/omni_ws/src/open_base/srv/KinematicsInverse.srv" NAME_WE)
@@ -79,7 +79,7 @@ _generate_msg_cpp(open_base
 _generate_msg_cpp(open_base
   "/home/nikita/omni_ws/src/open_base/msg/Movement.msg"
   "${MSG_I_FLAGS}"
-  "/home/nikita/omni_ws/src/open_base/msg/MovementBezier.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg;/home/nikita/omni_ws/src/open_base/msg/MovementGeneric.msg;/home/nikita/omni_ws/src/open_base/msg/Velocity.msg"
+  "/home/nikita/omni_ws/src/open_base/msg/MovementGeneric.msg;/home/nikita/omni_ws/src/open_base/msg/Velocity.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg;/home/nikita/omni_ws/src/open_base/msg/MovementBezier.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/open_base
 )
 
@@ -93,7 +93,7 @@ _generate_srv_cpp(open_base
 _generate_srv_cpp(open_base
   "/home/nikita/omni_ws/src/open_base/srv/KinematicsForward.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg;/home/nikita/omni_ws/src/open_base/msg/Velocity.msg"
+  "/home/nikita/omni_ws/src/open_base/msg/Velocity.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg"
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/open_base
 )
 _generate_srv_cpp(open_base
@@ -160,7 +160,7 @@ _generate_msg_eus(open_base
 _generate_msg_eus(open_base
   "/home/nikita/omni_ws/src/open_base/msg/Movement.msg"
   "${MSG_I_FLAGS}"
-  "/home/nikita/omni_ws/src/open_base/msg/MovementBezier.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg;/home/nikita/omni_ws/src/open_base/msg/MovementGeneric.msg;/home/nikita/omni_ws/src/open_base/msg/Velocity.msg"
+  "/home/nikita/omni_ws/src/open_base/msg/MovementGeneric.msg;/home/nikita/omni_ws/src/open_base/msg/Velocity.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg;/home/nikita/omni_ws/src/open_base/msg/MovementBezier.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/open_base
 )
 
@@ -174,7 +174,7 @@ _generate_srv_eus(open_base
 _generate_srv_eus(open_base
   "/home/nikita/omni_ws/src/open_base/srv/KinematicsForward.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg;/home/nikita/omni_ws/src/open_base/msg/Velocity.msg"
+  "/home/nikita/omni_ws/src/open_base/msg/Velocity.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg"
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/open_base
 )
 _generate_srv_eus(open_base
@@ -241,7 +241,7 @@ _generate_msg_lisp(open_base
 _generate_msg_lisp(open_base
   "/home/nikita/omni_ws/src/open_base/msg/Movement.msg"
   "${MSG_I_FLAGS}"
-  "/home/nikita/omni_ws/src/open_base/msg/MovementBezier.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg;/home/nikita/omni_ws/src/open_base/msg/MovementGeneric.msg;/home/nikita/omni_ws/src/open_base/msg/Velocity.msg"
+  "/home/nikita/omni_ws/src/open_base/msg/MovementGeneric.msg;/home/nikita/omni_ws/src/open_base/msg/Velocity.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg;/home/nikita/omni_ws/src/open_base/msg/MovementBezier.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/open_base
 )
 
@@ -255,7 +255,7 @@ _generate_srv_lisp(open_base
 _generate_srv_lisp(open_base
   "/home/nikita/omni_ws/src/open_base/srv/KinematicsForward.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg;/home/nikita/omni_ws/src/open_base/msg/Velocity.msg"
+  "/home/nikita/omni_ws/src/open_base/msg/Velocity.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg"
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/open_base
 )
 _generate_srv_lisp(open_base
@@ -322,7 +322,7 @@ _generate_msg_nodejs(open_base
 _generate_msg_nodejs(open_base
   "/home/nikita/omni_ws/src/open_base/msg/Movement.msg"
   "${MSG_I_FLAGS}"
-  "/home/nikita/omni_ws/src/open_base/msg/MovementBezier.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg;/home/nikita/omni_ws/src/open_base/msg/MovementGeneric.msg;/home/nikita/omni_ws/src/open_base/msg/Velocity.msg"
+  "/home/nikita/omni_ws/src/open_base/msg/MovementGeneric.msg;/home/nikita/omni_ws/src/open_base/msg/Velocity.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg;/home/nikita/omni_ws/src/open_base/msg/MovementBezier.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/open_base
 )
 
@@ -336,7 +336,7 @@ _generate_srv_nodejs(open_base
 _generate_srv_nodejs(open_base
   "/home/nikita/omni_ws/src/open_base/srv/KinematicsForward.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg;/home/nikita/omni_ws/src/open_base/msg/Velocity.msg"
+  "/home/nikita/omni_ws/src/open_base/msg/Velocity.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg"
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/open_base
 )
 _generate_srv_nodejs(open_base
@@ -403,7 +403,7 @@ _generate_msg_py(open_base
 _generate_msg_py(open_base
   "/home/nikita/omni_ws/src/open_base/msg/Movement.msg"
   "${MSG_I_FLAGS}"
-  "/home/nikita/omni_ws/src/open_base/msg/MovementBezier.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg;/home/nikita/omni_ws/src/open_base/msg/MovementGeneric.msg;/home/nikita/omni_ws/src/open_base/msg/Velocity.msg"
+  "/home/nikita/omni_ws/src/open_base/msg/MovementGeneric.msg;/home/nikita/omni_ws/src/open_base/msg/Velocity.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg;/home/nikita/omni_ws/src/open_base/msg/MovementBezier.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/open_base
 )
 
@@ -417,7 +417,7 @@ _generate_srv_py(open_base
 _generate_srv_py(open_base
   "/home/nikita/omni_ws/src/open_base/srv/KinematicsForward.srv"
   "${MSG_I_FLAGS}"
-  "/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg;/home/nikita/omni_ws/src/open_base/msg/Velocity.msg"
+  "/home/nikita/omni_ws/src/open_base/msg/Velocity.msg;/opt/ros/noetic/share/geometry_msgs/cmake/../msg/Pose2D.msg"
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/open_base
 )
 _generate_srv_py(open_base

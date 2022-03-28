@@ -53,8 +53,6 @@
   <build_depend>std_msgs</build_depend>
 
   <build_depend>gazebo_msgs</build_depend>
-
-
   <build_depend>rospy</build_depend>
 
   <run_depend>controller_interface</run_depend>

@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/nikita/omni_ws/build
 include open_base/CMakeFiles/_open_base_generate_messages_check_deps_KinematicsForward.dir/progress.make
 
 open_base/CMakeFiles/_open_base_generate_messages_check_deps_KinematicsForward:
-	cd /home/nikita/omni_ws/build/open_base && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py open_base /home/nikita/omni_ws/src/open_base/srv/KinematicsForward.srv geometry_msgs/Pose2D:open_base/Velocity
+	cd /home/nikita/omni_ws/build/open_base && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py open_base /home/nikita/omni_ws/src/open_base/srv/KinematicsForward.srv open_base/Velocity:geometry_msgs/Pose2D
 
 _open_base_generate_messages_check_deps_KinematicsForward: open_base/CMakeFiles/_open_base_generate_messages_check_deps_KinematicsForward
 _open_base_generate_messages_check_deps_KinematicsForward: open_base/CMakeFiles/_open_base_generate_messages_check_deps_KinematicsForward.dir/build.make
