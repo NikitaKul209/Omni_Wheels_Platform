@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 import time
-
+import math
 import rospy
 import roslib
 import sys
 import rospkg
+import numpy as np
+import os
 
 from std_msgs.msg import String
 from open_base.msg import Movement
@@ -21,7 +23,7 @@ length_3 = 1
 length_4 = 1
 length_5 = 1
 length_6 = 1
-
+pos=0
 
 rospy.init_node('Robot_control', anonymous=True)
 
@@ -87,18 +89,29 @@ def move_platform(x,y,z):
     vel.wheel.v_left = x
     vel.wheel.v_back = y
     vel.wheel.v_right = z
-    rospy.loginfo('x: {} y:{} z:{}'.format(x,y,z))
+    #rospy.loginfo('x: {} y:{} z:{}'.format(x,y,z))
+    
     vel.movement = Movement.WHEEL
     pub.publish(vel)
     rate.sleep()
 
 
 def callback(msg):
-    rospy.loginfo("Pos = {} " .format(msg.pose))
-def Position():
-    rospy.init_node('Origin_link', anonymous=True)
+    global pos
+    pos = msg.pose
+   # rospy.loginfo("Pos = {} " .format(msg.pose))
+def position():
     rospy.Subscriber("/gazebo/link_states", LinkStates,callback)
-    rospy.spin()
+
+
+
+def move_R_R_R ():
+    move_platform(pw1, pw2, pw3)
+
+
+
+
+
 
 def set_pose():
     rospy.wait_for_service('/gazebo/set_model_state')
@@ -122,18 +135,28 @@ def set_pose():
 
 
 set_pose()
+file = open("myfile.txt", "w")
 while True:
     move_platform(0.0, 0.3, -0.3)
+    
+    position()
+
+    file.write(str(pos))
+
     sharp_1()
     sharp_2()
     sharp_3()
     sharp_4()
     sharp_5()
     sharp_6()
-    rospy.loginfo('s1=: {} s2=: {} s3=: {} s4=: {} s5=: {} s6=: {}'.format(length_1,length_2,length_3,length_4,length_5,length_6))
-    if length_1 < 0.5 or length_2 < 0.5 or length_3 < 0.5 or length_4 < 0.5 or length_5 < 0.5 or length_6 < 0.5:
+    rospy.loginfo('\n s1=: {} \n s2=: {} \n s3=: {} \n s4=: {} \n s5=: {} \n s6=: {}'.format(round(length_1,2),round(length_2,2),round(length_3,2),round(length_4,2),round(length_5,2),round(length_6,2)))
+    if length_1 < 0.3 or length_2 < 0.3 or length_3 < 0.3 or length_4 < 0.3 or length_5 < 0.3 or length_6 < 0.5:
+        move_platform(0.0, -0.3, 0.3)
+
+        time.sleep(1)
         move_platform(0.3, 0.3, 0.3)
-        time.sleep(0.01)
+        time.sleep(1)
+file.close()
 
 
 

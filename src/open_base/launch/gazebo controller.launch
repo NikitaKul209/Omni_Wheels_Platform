@@ -25,6 +25,9 @@
 		name="height"
 		default="0"
 	/>
+	
+	
+	
 	<include file="$(find gazebo_ros)/launch/empty_world.launch">
 
 		<arg
@@ -49,7 +52,7 @@
 		/>
 		<arg
 			name="world_name"
-			value="worlds/empty.world"
+			value="$(find open_base)/worlds/World_1.world"
 		/>
 		<!--arg
 			name="physics"
