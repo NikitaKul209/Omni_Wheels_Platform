@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/nikita/omni_ws/devel/lib/open_base/open_base_sensor_encoder"
-  "/home/nikita/omni_ws/devel/lib/open_base/open_base_sensor_encoder.pdb"
+  "/home/nikita/omni_ws/devel/.private/open_base/lib/open_base/open_base_sensor_encoder"
+  "/home/nikita/omni_ws/devel/.private/open_base/lib/open_base/open_base_sensor_encoder.pdb"
   "CMakeFiles/open_base_sensor_encoder.dir/src/sensor/encoder.cpp.o"
 )
 

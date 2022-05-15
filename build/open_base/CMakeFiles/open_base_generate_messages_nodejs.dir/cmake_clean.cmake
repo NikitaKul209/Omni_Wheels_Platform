@@ -1,11 +1,11 @@
 file(REMOVE_RECURSE
-  "/home/nikita/omni_ws/devel/share/gennodejs/ros/open_base/msg/Movement.js"
-  "/home/nikita/omni_ws/devel/share/gennodejs/ros/open_base/msg/MovementBezier.js"
-  "/home/nikita/omni_ws/devel/share/gennodejs/ros/open_base/msg/MovementGeneric.js"
-  "/home/nikita/omni_ws/devel/share/gennodejs/ros/open_base/msg/Velocity.js"
-  "/home/nikita/omni_ws/devel/share/gennodejs/ros/open_base/srv/FrameToFrame.js"
-  "/home/nikita/omni_ws/devel/share/gennodejs/ros/open_base/srv/KinematicsForward.js"
-  "/home/nikita/omni_ws/devel/share/gennodejs/ros/open_base/srv/KinematicsInverse.js"
+  "/home/nikita/omni_ws/devel/.private/open_base/share/gennodejs/ros/open_base/msg/Movement.js"
+  "/home/nikita/omni_ws/devel/.private/open_base/share/gennodejs/ros/open_base/msg/MovementBezier.js"
+  "/home/nikita/omni_ws/devel/.private/open_base/share/gennodejs/ros/open_base/msg/MovementGeneric.js"
+  "/home/nikita/omni_ws/devel/.private/open_base/share/gennodejs/ros/open_base/msg/Velocity.js"
+  "/home/nikita/omni_ws/devel/.private/open_base/share/gennodejs/ros/open_base/srv/FrameToFrame.js"
+  "/home/nikita/omni_ws/devel/.private/open_base/share/gennodejs/ros/open_base/srv/KinematicsForward.js"
+  "/home/nikita/omni_ws/devel/.private/open_base/share/gennodejs/ros/open_base/srv/KinematicsInverse.js"
   "CMakeFiles/open_base_generate_messages_nodejs"
 )
 

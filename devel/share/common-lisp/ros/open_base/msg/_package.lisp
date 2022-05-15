@@ -1,13 +1,1 @@
-(cl:defpackage open_base-msg
-  (:use )
-  (:export
-   "<MOVEMENT>"
-   "MOVEMENT"
-   "<MOVEMENTBEZIER>"
-   "MOVEMENTBEZIER"
-   "<MOVEMENTGENERIC>"
-   "MOVEMENTGENERIC"
-   "<VELOCITY>"
-   "VELOCITY"
-  ))
-
+/home/nikita/omni_ws/devel/.private/open_base/share/common-lisp/ros/open_base/msg/_package.lisp

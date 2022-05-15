@@ -14,7 +14,8 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   gazebo_msgs
   rospy
-  message_generation)
+  message_generation
+  std_msgs)
 find_package(cmake_modules REQUIRED)
 
 
@@ -134,7 +135,7 @@ catkin_package(
 )
 
 catkin_install_python(PROGRAMS script/publisher_node.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
-
+catkin_install_python(PROGRAMS script/launch.py DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 ###########
 ## Build ##

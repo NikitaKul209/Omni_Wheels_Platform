@@ -1,0 +1,8 @@
+[01m[K/home/nikita/omni_ws/src/open_base/src/kinematics.cpp:[m[K In function ‘[01m[Kbool mobileToWorld(open_base::FrameToFrame::Request&, open_base::FrameToFrame::Response&)[m[K’:
+[01m[K/home/nikita/omni_ws/src/open_base/src/kinematics.cpp:28:1:[m[K [01;35m[Kwarning: [m[Kno return statement in function returning non-void [[01;35m[K-Wreturn-type[m[K]
+   28 | [01;35m[K}[m[K
+      | [01;35m[K^[m[K
+[01m[K/home/nikita/omni_ws/src/open_base/src/kinematics.cpp:[m[K In function ‘[01m[Kbool worldToMobile(open_base::FrameToFrame::Request&, open_base::FrameToFrame::Response&)[m[K’:
+[01m[K/home/nikita/omni_ws/src/open_base/src/kinematics.cpp:37:1:[m[K [01;35m[Kwarning: [m[Kno return statement in function returning non-void [[01;35m[K-Wreturn-type[m[K]
+   37 | [01;35m[K}[m[K
+      | [01;35m[K^[m[K

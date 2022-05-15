@@ -1,7 +1,1 @@
-
-"use strict";
-
-module.exports = {
-  msg: require('./msg/_index.js'),
-  srv: require('./srv/_index.js')
-};
+/home/nikita/omni_ws/devel/.private/open_base/share/gennodejs/ros/open_base/_index.js

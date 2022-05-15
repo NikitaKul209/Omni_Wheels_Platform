@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/nikita/omni_ws/devel/lib/open_base/open_base_odometry"
-  "/home/nikita/omni_ws/devel/lib/open_base/open_base_odometry.pdb"
+  "/home/nikita/omni_ws/devel/.private/open_base/lib/open_base/open_base_odometry"
+  "/home/nikita/omni_ws/devel/.private/open_base/lib/open_base/open_base_odometry.pdb"
   "CMakeFiles/open_base_odometry.dir/src/odometry.cpp.o"
 )
 

@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/nikita/omni_ws/devel/include/open_base/KinematicsForward.h
+/home/nikita/omni_ws/devel/.private/open_base/include/open_base/KinematicsForward.h
 ros/service_traits.h
 -
 open_base/KinematicsForwardRequest.h
@@ -14,7 +14,7 @@ open_base/KinematicsForwardRequest.h
 open_base/KinematicsForwardResponse.h
 -
 
-/home/nikita/omni_ws/devel/include/open_base/KinematicsForwardRequest.h
+/home/nikita/omni_ws/devel/.private/open_base/include/open_base/KinematicsForwardRequest.h
 string
 -
 vector
@@ -32,7 +32,7 @@ ros/message_operations.h
 open_base/Velocity.h
 -
 
-/home/nikita/omni_ws/devel/include/open_base/KinematicsForwardResponse.h
+/home/nikita/omni_ws/devel/.private/open_base/include/open_base/KinematicsForwardResponse.h
 string
 -
 vector
@@ -50,7 +50,7 @@ ros/message_operations.h
 geometry_msgs/Pose2D.h
 -
 
-/home/nikita/omni_ws/devel/include/open_base/Velocity.h
+/home/nikita/omni_ws/devel/.private/open_base/include/open_base/Velocity.h
 string
 -
 vector

@@ -1,0 +1,6 @@
+devel_space: /home/nikita/omni_ws/devel
+install: false
+install_space: /home/nikita/omni_ws/install
+profile: default
+source_space: /home/nikita/omni_ws/src
+workspace: /home/nikita/omni_ws

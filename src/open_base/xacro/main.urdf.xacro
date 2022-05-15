@@ -107,14 +107,14 @@
   <!--xacro:sonar sonar_name="left_rf" base_name="body_link" dx="${-0.01+sonar_shift}" dy="${sonar_dist}"  array_no="6"/-->
   <!--xacro:sonar sonar_name="right_rf" base_name="body_link" dx="${-0.01+sonar_shift}" dy="${-sonar_dist}"  array_no="7"/-->
   
-   <xacro:sonar sonar_name="one" base_name="base_link" dx="0 " dy="-0.04" dz="0.03" yaw="${3*pi/2}" array_no="1"/>
-  <xacro:sonar sonar_name="two" base_name="base_link" dx="-0.03464101615 " dy="0.02" dz="0.03" yaw="${5*pi/6}" array_no="2"/>
-    <xacro:sonar sonar_name="three" base_name="base_link" dx="0.03464101615 " dy="0.02" dz="0.03" yaw="${pi/6}" array_no="3"/>
+   <xacro:sonar sonar_name="one" base_name="base_link" dx="0 " dy="-0.04" dz="0.035" yaw="${3*pi/2}" array_no="1"/>
+  <xacro:sonar sonar_name="two" base_name="base_link" dx="-0.03464101615 " dy="0.02" dz="0.035" yaw="${5*pi/6}" array_no="2"/>
+    <xacro:sonar sonar_name="three" base_name="base_link" dx="0.03464101615 " dy="0.02" dz="0.035" yaw="${pi/6}" array_no="3"/>
 
 	
-  <xacro:sonar sonar_name="for" base_name="base_link" dx="-0.03464101615 " dy="-0.02" dz="0.03" yaw="${pi/6+pi}" array_no="4"/>
-  <xacro:sonar sonar_name="five" base_name="base_link" dx="0 " dy="0.04" dz="0.03" yaw="${3*pi/2+pi}" array_no="5"/>
-    <xacro:sonar sonar_name="six" base_name="base_link" dx="0.03464101615 " dy="-0.02" dz="0.03" yaw="${5*pi/6+pi}" array_no="6"/>
+  <xacro:sonar sonar_name="for" base_name="base_link" dx="-0.03464101615 " dy="-0.02" dz="0.035" yaw="${pi/6+pi}" array_no="4"/>
+  <xacro:sonar sonar_name="five" base_name="base_link" dx="0 " dy="0.04" dz="0.035" yaw="${3*pi/2+pi}" array_no="5"/>
+    <xacro:sonar sonar_name="six" base_name="base_link" dx="0.03464101615 " dy="-0.02" dz="0.035" yaw="${5*pi/6+pi}" array_no="6"/>
 	
 	
 	

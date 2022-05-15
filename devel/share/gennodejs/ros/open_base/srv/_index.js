@@ -1,12 +1,1 @@
-
-"use strict";
-
-let KinematicsInverse = require('./KinematicsInverse.js')
-let FrameToFrame = require('./FrameToFrame.js')
-let KinematicsForward = require('./KinematicsForward.js')
-
-module.exports = {
-  KinematicsInverse: KinematicsInverse,
-  FrameToFrame: FrameToFrame,
-  KinematicsForward: KinematicsForward,
-};
+/home/nikita/omni_ws/devel/.private/open_base/share/gennodejs/ros/open_base/srv/_index.js

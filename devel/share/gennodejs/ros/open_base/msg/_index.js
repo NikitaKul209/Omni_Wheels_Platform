@@ -1,14 +1,1 @@
-
-"use strict";
-
-let MovementBezier = require('./MovementBezier.js');
-let Movement = require('./Movement.js');
-let MovementGeneric = require('./MovementGeneric.js');
-let Velocity = require('./Velocity.js');
-
-module.exports = {
-  MovementBezier: MovementBezier,
-  Movement: Movement,
-  MovementGeneric: MovementGeneric,
-  Velocity: Velocity,
-};
+/home/nikita/omni_ws/devel/.private/open_base/share/gennodejs/ros/open_base/msg/_index.js

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/nikita/omni_ws/devel/lib/open_base/open_base_main"
-  "/home/nikita/omni_ws/devel/lib/open_base/open_base_main.pdb"
+  "/home/nikita/omni_ws/devel/.private/open_base/lib/open_base/open_base_main"
+  "/home/nikita/omni_ws/devel/.private/open_base/lib/open_base/open_base_main.pdb"
   "CMakeFiles/open_base_main.dir/src/main.cpp.o"
 )
 

@@ -68,7 +68,7 @@ set(open_base_CONFIG_INCLUDED TRUE)
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
   set(open_base_SOURCE_PREFIX /home/nikita/omni_ws/src/open_base)
-  set(open_base_DEVEL_PREFIX /home/nikita/omni_ws/devel)
+  set(open_base_DEVEL_PREFIX /home/nikita/omni_ws/devel/.private/open_base)
   set(open_base_INSTALL_PREFIX "")
   set(open_base_PREFIX ${open_base_DEVEL_PREFIX})
 else()

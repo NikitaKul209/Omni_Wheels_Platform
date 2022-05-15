@@ -1,6 +1,1 @@
-(cl:in-package open_base-srv)
-(cl:export '(INPUT-VAL
-          INPUT
-          OUTPUT-VAL
-          OUTPUT
-))
+/home/nikita/omni_ws/devel/.private/open_base/share/common-lisp/ros/open_base/srv/_package_KinematicsInverse.lisp

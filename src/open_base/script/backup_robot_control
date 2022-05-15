@@ -1,0 +1,38 @@
+#
+#
+# set_pose()
+# file = open("myfile.txt", "w")
+# while True:
+#     move_platform(0.0, 0.3, -0.3)
+#
+#     position()
+#
+#     file.write(str(pos))
+#
+#     sharp_1()
+#     sharp_2()
+#     sharp_3()
+#     sharp_4()
+#     sharp_5()
+#     sharp_6()
+#     rospy.loginfo('\n s1=: {} \n s2=: {} \n s3=: {} \n s4=: {} \n s5=: {} \n s6=: {}'.format(round(length_1,2),round(length_2,2),round(length_3,2),round(length_4,2),round(length_5,2),round(length_6,2)))
+#     if length_1 < 0.3 or length_2 < 0.3 or length_3 < 0.3 or length_4 < 0.3 or length_5 < 0.3 or length_6 < 0.5:
+#         move_platform(0.0, -0.3, 0.3)
+#
+#
+#         time.sleep(1)
+#         move_platform(0.3, 0.3, 0.3)
+#         time.sleep(1)
+# file.close()
+#
+
+    # sharp_1()
+    # sharp_2()
+    # sharp_3()
+    # sharp_4()
+    # sharp_5()
+    # sharp_6()
+    # move_platform(0.0, 0.5, -0.5)
+    # time.sleep(5)
+    # move_platform(0.5, 0.5, 0.5)
+    # time.sleep(5)

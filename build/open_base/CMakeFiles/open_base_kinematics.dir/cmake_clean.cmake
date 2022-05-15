@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/nikita/omni_ws/devel/lib/open_base/open_base_kinematics"
-  "/home/nikita/omni_ws/devel/lib/open_base/open_base_kinematics.pdb"
+  "/home/nikita/omni_ws/devel/.private/open_base/lib/open_base/open_base_kinematics"
+  "/home/nikita/omni_ws/devel/.private/open_base/lib/open_base/open_base_kinematics.pdb"
   "CMakeFiles/open_base_kinematics.dir/src/kinematics.cpp.o"
 )
 
