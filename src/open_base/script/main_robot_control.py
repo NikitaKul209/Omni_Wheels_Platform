@@ -56,14 +56,16 @@ class Omni_Wheels_Platform():
             pos = msg.pose[ind]
             z = pos.orientation.z
             w = pos.orientation.w
-            self.orient = math.atan2(z, w)*180/math.pi
+            self.orient = int(math.atan2(z, w)*180/math.pi)
             if self.orient < 0:
-                self.orient =self.orient +360
-            #rospy.loginfo("Pos = {} " .format(msg.pose))
-            rospy.loginfo("Orient = {:.3f} ".format(self.orient))
+                self.orient = (self.orient + 360)
+                self.orient = int(self.orient)
+
+            # rospy.loginfo("Pos = {} " .format(msg.pose))
+            # rospy.loginfo("Orient = {:.3f} ".format(self.orient))
 
         def reset_pose(self):
-            self.Move_0_0_0()
+            # self.Move_0_0_0()
             rospy.wait_for_service('/gazebo/set_model_state')
             set_state_service = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
             objstate = SetModelStateRequest()  # Create an object of type SetModelStateRequest
@@ -82,6 +84,8 @@ class Omni_Wheels_Platform():
             objstate.model_state.twist.angular.y = 0.0
             objstate.model_state.twist.angular.z = 0.0
             result = set_state_service(objstate)
+
+
 
         def Move_0_0_0(self):
             self.move_platform(0.0, 0.0, 0.0)

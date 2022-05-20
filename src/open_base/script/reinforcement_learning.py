@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 
-from main_robot_control import Omni_Wheels_Platform
+from main_robot_control import  Omni_Wheels_Platform
 
 import gym
-import  numpy as np
+import numpy as np
 import rospy
 from gym import spaces
-
+import random
+from IPython.display import clear_output
+import  math
+import time
 class GazeboEnv(gym.Env):
     """
     Custom Environment that follows gym interface.
@@ -83,18 +86,18 @@ class GazeboEnv(gym.Env):
         self.EAST = list(range(0, 10))
         self.EAST.extend(range(350,360))
 
-        self.direction = self.NORTH
-        self.robot = robot
-
+        self.possible_commands = [('North', self.NORTH),
+                                  ('South', self.SOUTH),
+                                  ('West',  self.WEST),
+                                  ('East',  self.EAST)]
+        self.robot = Omni_Wheels_Platform()
 
         self.agent_pos = self.robot.orient
+        self.delta = 0
         n_actions = 27
-        n_spaces = 4
-        self.action_space = spaces.Discrete(n_actions)
-        # The observation will be the coordinate of the agent
-        # this can be described both by Discrete and Box space
-        # self.observation_space = spaces.Box(1,self.agent_pos)
-
+        self.action_space = gym.spaces.Discrete(n_actions)
+        self.observation_space = gym.spaces.Tuple((gym.spaces.Discrete(len(self.possible_commands)),
+                                                   gym.spaces.Discrete(4)))
 
 
     def reset(self):
@@ -103,11 +106,15 @@ class GazeboEnv(gym.Env):
         :return: (np.array)
         """
         self.robot.reset_pose()
-        # Initialize the agent at the right of the grid
-        # here we convert to float32 to make it more general (in case we want to use continuous actions)
-        return np.array([self.agent_pos]).astype(np.float32)
+        self.agent_pos = 0
+        self.command = random.randrange(len(self.possible_commands))
+        return self._calculate_observation()
 
     def step(self, action):
+
+        # action = 0
+        #
+        # print('!'*100 + str(action) + ' ' + str(self.Move_0_0_0))
         if action == self.Move_0_0_0:
             self.robot.Move_0_0_0()
 
@@ -189,49 +196,42 @@ class GazeboEnv(gym.Env):
         if action == self.Move_R_L_R:
             self.robot.Move_R_L_R()
 
+        # else:
+        #     raise ValueError("Received invalid action={} which is not part of the action space".format(action))
+
+        obs = self._calculate_observation()
+        reward = self.reward_calc()
+        done = self.agent_pos in self.possible_commands[self.command][1]
+        time.sleep(0.1)
+
+        # return observation and reward
+        return obs, reward, done, {}
+
+
+    def reward_calc(self):
+
+        if self.agent_pos in self.possible_commands[self.command][1]:
+            self.delta = 0
         else:
-            raise ValueError("Received invalid action={} which is not part of the action space".format(action))
+            self.delta = min(abs(np.max(self.possible_commands[self.command][1]) - self.agent_pos),
+                             abs(np.min(self.possible_commands[self.command][1]) - self.agent_pos))
+        self.reward = math.exp(-self.delta)
+        return self.reward
 
-        # Account for the boundaries of the grid
-        self.agent_pos = np.clip(self.agent_pos)
+    def _calculate_observation(self):
 
-        # Are we at the left of the grid?
-        done = bool(self.agent_pos in self.NORTH)
+        _,goal_dir = self.possible_commands[self.command]
+        relative_orient = 1 if self.agent_pos in goal_dir else (2 if self.delta in list(range(0, 40))
+                                                else (3 if self.delta in list(range(41, 80)) else 4))
+        return [self.command, relative_orient]
 
-        # Null reward everywhere except when reaching the goal (left of the grid)
 
-
-        if self.agent_pos in self.NORTH:
-            reward = 1
-
-        if self.agent_pos in list(range(np.max(self.direction)+1, np.max(self.direction)+10,1)):
-            reward = -1
-            state = "few deviation right"
-        if self.agent_pos in list(range(np.min(self.direction) - 1, np.min(self.direction) - 10,-1)):
-            reward = -1
-            state = "few deviation left"
-
-        if self.agent_pos in list(range(np.max(self.direction) + 11, np.max(self.direction) + 20, 1)):
-            reward = -2
-            state = "few deviation right"
-        if self.agent_pos in list(range(np.min(self.direction) - 11, np.min(self.direction) - 20, -1)):
-            reward = -2
-            state = "few deviation left"
-
-            # if self.agent_pos - np.max(self.direction) > 20 or self.agent_pos - np.min(self.direction) < 20
-
-#
-#         # Optionally we can pass additional info, we are not using that for now
-#         info = {}
-#
-#         return np.array([self.agent_pos]).astype(np.float32), reward, done, info
-#
     def render(self, mode='console'):
-        if mode != 'console':
-            raise NotImplementedError()
-        # agent is represented as a cross, rest as a dot
-        print("." * self.agent_pos, end="")
-        print("x", end="")
+
+        print('Orientation is, goal is {}, reward is {}'
+              .format(self.agent_pos,
+                      self.possible_commands[self.command][0],
+                      self.reward))
 
 
     def close(self):
@@ -244,18 +244,100 @@ def main():
     robot.reset_pose()
 
 
+
     while not rospy.is_shutdown():
         robot.Move_R_L_R()
         rospy.loginfo('\n'.join(['\n s{} : {:.3f}'.format(i+1, dist) for i,dist in enumerate(robot.dists)]))
         rospy.sleep(0.01)
 
 
-if __name__ == '__main__':
-    try:
-        main()
-    except rospy.exceptions.ROSInterruptException:
-        pass
-exit(0)
+# if __name__ == '__main__':
+#     try:
+#         main()
+#     except rospy.exceptions.ROSInterruptException:
+#         pass
+# exit(0)
+
+
+
+def Q_Learning():
+
+    rospy.init_node('Robot_control', anonymous=True)
+    robot = Omni_Wheels_Platform()
+    env = GazeboEnv(robot)
+    obs = env.reset()
+    print(env.agent_pos)
+    time.sleep(5)
+
+    q_table = np.zeros([4 * len(env.possible_commands),27])
+
+    # Hyperparameters
+    alpha = 0.1
+    gamma = 0.6
+    epsilon = 0.1
+
+    # For plotting metrics
+    all_epochs = []
+    all_penalties = []
+
+    for i in range(1, 100):
+        obs = env.reset()
+
+        epochs, penalties, reward, = 0, 0, 0
+        done = False
+
+        while not done:
+            print(obs)
+            print(env.agent_pos)
+            q_table_ind = (obs[0] - 1) * 4 + (obs[1] - 1)
+            if random.uniform(0, 1) < epsilon:
+                action = env.action_space.sample()  # Explore action space
+            else:
+                action = np.argmax(q_table[q_table_ind]) # Exploit learned values
+
+            next_obs, reward, done, info = env.step(action)
+
+            old_value = q_table[q_table_ind, action]
+            q_table_new_ind = (obs[0] - 1) * 4 + (obs[1] - 1)
+            next_max = np.max(q_table[q_table_new_ind])
+
+            new_value = (1 - alpha) * old_value + alpha * (reward + gamma * next_max)
+            q_table[q_table_ind, action] = new_value
+
+            obs = next_obs
+            epochs += 1
+            # env.render()
+
+        if i % 100 == 0:
+            print(f"Episode: {i}")
+
+    print("Training finished.\n")
+    return q_table
+
+
+def random_movement():
+    # create environment
+    rospy.init_node('Robot_control', anonymous=True)
+    robot = Omni_Wheels_Platform
+    env = GazeboEnv(robot)
+    max_num_steps = 1000
+    # reset environment
+    env.reset()
+    for step in range(max_num_steps):
+        # get random action
+        action = env.action_space.sample()
+        # use this action
+        obs, reward, done, info = env.step(action)
+        # print info
+        env.render()
+        if done:
+            # restart processing if the goal is achieved
+            env.reset()
+    env.close()
+
+
+# random_movement()
+Q_Learning()
 
 
 
@@ -263,51 +345,3 @@ exit(0)
 
 
 
-
-
-
-
-
-# obs = env.reset()
-# env.render()
-#
-# print(env.observation_space)
-# print(env.action_space)
-# print(env.action_space.sample())
-#
-# GO_LEFT = 0
-# # Hardcoded best agent: always go left!
-# n_steps = 20
-# for step in range(n_steps):
-#   print("Step {}".format(step + 1))
-#   obs, reward, done, info = env.step(GO_LEFT)
-#   print('obs=', obs, 'reward=', reward, 'done=', done)
-#   env.render()
-#   if done:
-#     print("Goal reached!", "reward=", reward)
-#     break
-
-
-from stable_baselines3 import PPO, A2C # DQN coming soon
-from stable_baselines3.common.env_util import make_vec_env
-
-# Instantiate the env
-
-# wrap it
-# env = make_vec_env(lambda: env, n_envs=1)
-# # model = ('MlpPolicy', env, verbose=1).learn(5000)
-#
-# obs = env.reset()
-# n_steps = 20
-# for step in range(n_steps):
-#   action, _ = model.predict(obs, deterministic=True)
-#   print("Step {}".format(step + 1))
-#   print("Action: ", action)
-#   obs, reward, done, info = env.step(action)
-#   print('obs=', obs, 'reward=', reward, 'done=', done)
-#   env.render(mode='console')
-#   if done:
-#     # Note that the VecEnv resets automatically
-#     # when a done signal is encountered
-#     print("Goal reached!", "reward=", reward)
-#     break
