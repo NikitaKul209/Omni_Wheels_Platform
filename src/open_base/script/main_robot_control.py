@@ -25,10 +25,11 @@ class Omni_Wheels_Platform():
         def __init__(self):
             # Показания дальномеров
             self.dists = [0.] * 6
+            self.orient = 0
             self.sonar_topics = ['one_sonar','two_sonar','three_sonar','for_sonar','five_sonar','six_sonar']
 
-            self.orient = 0
-            #rospy.logerr('Orient: {}'.format(self.orient))
+
+            # rospy.logerr('Orient: {}'.format(self.orient))
 
             # create subscribers
             self.sub_funcs = [partial(self.callback_range,  sonar_index=i)
@@ -63,9 +64,10 @@ class Omni_Wheels_Platform():
 
             # rospy.loginfo("Pos = {} " .format(msg.pose))
             # rospy.loginfo("Orient = {:.3f} ".format(self.orient))
+            # time.sleep(0.2)
 
         def reset_pose(self):
-            # self.Move_0_0_0()
+            self.Move_0_0_0()
             rospy.wait_for_service('/gazebo/set_model_state')
             set_state_service = rospy.ServiceProxy('/gazebo/set_model_state', SetModelState)
             objstate = SetModelStateRequest()  # Create an object of type SetModelStateRequest

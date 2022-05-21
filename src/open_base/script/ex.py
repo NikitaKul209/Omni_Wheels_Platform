@@ -149,6 +149,7 @@ def q_learning_training():
             obs = next_obs
             epochs += 1
             env.render()
+            print(q_table)
         if i % 100 == 0:
             print(f"Episode: {i}")
 

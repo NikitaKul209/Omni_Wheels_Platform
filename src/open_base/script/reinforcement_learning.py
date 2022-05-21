@@ -93,6 +93,7 @@ class GazeboEnv(gym.Env):
         self.robot = Omni_Wheels_Platform()
 
         self.agent_pos = self.robot.orient
+        self.ranges = self.robot.dists
         self.delta = 0
         n_actions = 27
         self.action_space = gym.spaces.Discrete(n_actions)
@@ -106,102 +107,100 @@ class GazeboEnv(gym.Env):
         :return: (np.array)
         """
         self.robot.reset_pose()
-        self.agent_pos = 0
+        self.robot.orient = 0
+
         self.command = random.randrange(len(self.possible_commands))
         return self._calculate_observation()
 
     def step(self, action):
 
-        # action = 0
-        #
-        # print('!'*100 + str(action) + ' ' + str(self.Move_0_0_0))
         if action == self.Move_0_0_0:
             self.robot.Move_0_0_0()
 
-        if action == self.Move_0_0_L:
+        elif action == self.Move_0_0_L:
             self.robot.Move_0_0_L()
 
-        if action == self.Move_0_0_R:
+        elif action == self.Move_0_0_R:
             self.robot.Move_0_0_R()
 
-        if action == self.Move_0_L_0:
+        elif action == self.Move_0_L_0:
             self.robot.Move_0_L_0()
 
-        if action == self.Move_0_R_0:
+        elif action == self.Move_0_R_0:
             self.robot.Move_0_R_0()
 
-        if action == self.Move_0_L_L:
+        elif action == self.Move_0_L_L:
             self.robot.Move_0_L_L()
 
-        if action == self.Move_0_R_R:
+        elif action == self.Move_0_R_R:
             self.robot.Move_0_R_R()
 
-        if action == self.Move_0_L_R:
+        elif action == self.Move_0_L_R:
             self.robot.Move_0_L_R()
 
-        if action == self.Move_0_R_L:
+        elif action == self.Move_0_R_L:
             self.robot.Move_0_R_L()
 
-        if action == self.Move_L_0_0:
+        elif action == self.Move_L_0_0:
             self.robot.Move_L_0_0()
 
-        if action == self.Move_R_0_0:
+        elif action == self.Move_R_0_0:
             self.robot.Move_R_0_0()
 
-        if action == self.Move_L_0_L:
+        elif action == self.Move_L_0_L:
             self.robot.Move_L_0_L()
 
-        if action == self.Move_R_0_R:
+        elif action == self.Move_R_0_R:
             self.robot.Move_R_0_R()
 
-        if action == self.Move_L_0_R:
+        elif action == self.Move_L_0_R:
             self.robot.Move_L_0_R()
 
-        if action == self.Move_R_0_L:
+        elif action == self.Move_R_0_L:
             self.robot.Move_R_0_L()
 
-        if action == self.Move_L_L_0:
+        elif action == self.Move_L_L_0:
             self.robot.Move_L_L_0()
 
-        if action == self.Move_R_R_0:
+        elif action == self.Move_R_R_0:
             self.robot.Move_R_R_0()
 
-        if action == self.Move_L_R_0:
+        elif action == self.Move_L_R_0:
             self.robot.Move_L_R_0()
 
-        if action == self.Move_R_L_0:
+        elif action == self.Move_R_L_0:
             self.robot.Move_R_L_0()
 
-        if action == self.Move_L_L_L:
+        elif action == self.Move_L_L_L:
             self.robot.Move_L_L_L()
 
-        if action == self.Move_R_R_R:
+        elif action == self.Move_R_R_R:
             self.robot.Move_R_R_R()
 
-        if action == self.Move_L_L_R:
+        elif action == self.Move_L_L_R:
             self.robot.Move_L_L_R()
 
-        if action == self.Move_R_R_L:
+        elif action == self.Move_R_R_L:
             self.robot.Move_R_R_L()
 
-        if action == self.Move_L_R_R:
+        elif action == self.Move_L_R_R:
             self.robot.Move_L_R_R()
 
-        if action == self.Move_R_L_L:
+        elif action == self.Move_R_L_L:
             self.robot.Move_R_R_L()
 
-        if action == self.Move_L_R_L:
+        elif action == self.Move_L_R_L:
             self.robot.Move_L_R_L()
 
-        if action == self.Move_R_L_R:
+        elif action == self.Move_R_L_R:
             self.robot.Move_R_L_R()
 
-        # else:
-        #     raise ValueError("Received invalid action={} which is not part of the action space".format(action))
+        else:
+            raise ValueError("Received invalid action={} which is not part of the action space".format(action))
 
         obs = self._calculate_observation()
         reward = self.reward_calc()
-        done = self.agent_pos in self.possible_commands[self.command][1]
+        done = self.robot.orient in self.possible_commands[self.command][1]
         time.sleep(0.1)
 
         # return observation and reward
@@ -210,69 +209,49 @@ class GazeboEnv(gym.Env):
 
     def reward_calc(self):
 
-        if self.agent_pos in self.possible_commands[self.command][1]:
+        if self.robot.orient in self.possible_commands[self.command][1]:
             self.delta = 0
         else:
-            self.delta = min(abs(np.max(self.possible_commands[self.command][1]) - self.agent_pos),
-                             abs(np.min(self.possible_commands[self.command][1]) - self.agent_pos))
+            self.delta = min(abs(np.max(self.possible_commands[self.command][1]) - self.robot.orient),
+                             abs(np.min(self.possible_commands[self.command][1]) - self.robot.orient))
         self.reward = math.exp(-self.delta)
         return self.reward
 
     def _calculate_observation(self):
 
         _,goal_dir = self.possible_commands[self.command]
-        relative_orient = 1 if self.agent_pos in goal_dir else (2 if self.delta in list(range(0, 40))
+        relative_orient = 1 if self.robot.orient in goal_dir else (2 if self.delta in list(range(0, 40))
                                                 else (3 if self.delta in list(range(41, 80)) else 4))
         return [self.command, relative_orient]
 
 
     def render(self, mode='console'):
 
-        print('Orientation is, goal is {}, reward is {}'
-              .format(self.agent_pos,
+        print('Orientation is {}, goal is {}, reward is {}'
+              .format(self.robot.orient,
                       self.possible_commands[self.command][0],
                       self.reward))
-
 
     def close(self):
         pass
 
-def main():
-    rospy.init_node('Robot_control', anonymous=True)
-    robot = Omni_Wheels_Platform()
-    env = GazeboEnv(robot)
-    robot.reset_pose()
 
-
-
-    while not rospy.is_shutdown():
-        robot.Move_R_L_R()
-        rospy.loginfo('\n'.join(['\n s{} : {:.3f}'.format(i+1, dist) for i,dist in enumerate(robot.dists)]))
-        rospy.sleep(0.01)
-
-
-# if __name__ == '__main__':
-#     try:
-#         main()
-#     except rospy.exceptions.ROSInterruptException:
-#         pass
-# exit(0)
 
 
 
 def Q_Learning():
 
+
     rospy.init_node('Robot_control', anonymous=True)
     robot = Omni_Wheels_Platform()
     env = GazeboEnv(robot)
     obs = env.reset()
-    print(env.agent_pos)
     time.sleep(5)
 
     q_table = np.zeros([4 * len(env.possible_commands),27])
 
     # Hyperparameters
-    alpha = 0.1
+    alpha = 0.3
     gamma = 0.6
     epsilon = 0.1
 
@@ -287,8 +266,11 @@ def Q_Learning():
         done = False
 
         while not done:
-            print(obs)
-            print(env.agent_pos)
+            # print(env.agent_pos)
+            # print(obs)
+            # print(robot.orient)
+            # print(robot.dists)
+            # rospy.loginfo('\n'.join(['\n s{} : {:.3f}'.format(i + 1, dist) for i, dist in enumerate(robot.dists)]))
             q_table_ind = (obs[0] - 1) * 4 + (obs[1] - 1)
             if random.uniform(0, 1) < epsilon:
                 action = env.action_space.sample()  # Explore action space
@@ -306,7 +288,10 @@ def Q_Learning():
 
             obs = next_obs
             epochs += 1
-            # env.render()
+
+            print(q_table)
+            print(epochs)
+            env.render()
 
         if i % 100 == 0:
             print(f"Episode: {i}")
@@ -336,9 +321,27 @@ def random_movement():
     env.close()
 
 
-# random_movement()
-Q_Learning()
 
+
+def main():
+    rospy.init_node('Robot_control', anonymous=True)
+    robot = Omni_Wheels_Platform()
+    env = GazeboEnv(robot)
+    robot.reset_pose()
+
+    while not rospy.is_shutdown():
+        robot.Move_R_L_R()
+        rospy.loginfo('\n'.join(['\n s{} : {:.3f}'.format(i+1, dist) for i,dist in enumerate(robot.dists)]))
+        rospy.sleep(0.01)
+
+
+if __name__ == '__main__':
+    try:
+        Q_Learning()
+
+    except rospy.exceptions.ROSInterruptException:
+        pass
+exit(0)
 
 
 
