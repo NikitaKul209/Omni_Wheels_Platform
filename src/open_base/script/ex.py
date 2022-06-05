@@ -2,7 +2,7 @@
 
 import math
 import random
-
+from datetime import datetime
 import numpy as np
 
 import gym
@@ -111,6 +111,7 @@ def random_movement():
 
 
 def q_learning_training():
+    start_time = datetime.now()
     
     # create environment
     env = CustomEnv()
@@ -149,11 +150,12 @@ def q_learning_training():
             obs = next_obs
             epochs += 1
             env.render()
-            print(q_table)
+            print(obs)
         if i % 100 == 0:
             print(f"Episode: {i}")
 
     print("Training finished.\n")
+    print("Время обучения: ", datetime.now() - start_time)
     return q_table
 
 

@@ -113,7 +113,7 @@
 
 	
   <xacro:sonar sonar_name="for" base_name="base_link" dx="-0.03464101615 " dy="-0.02" dz="0.035" yaw="${pi/6+pi}" array_no="4"/>
-  <xacro:sonar sonar_name="five" base_name="base_link" dx="0 " dy="0.04" dz="0.035" yaw="${3*pi/2+pi}" array_no="5"/>
+  <xacro:sonar sonar_name="five" base_name="base_link" dx="0 " dy="0.14" dz="0.135" yaw="${3*pi/2+pi}" array_no="5"/>
     <xacro:sonar sonar_name="six" base_name="base_link" dx="0.03464101615 " dy="-0.02" dz="0.035" yaw="${5*pi/6+pi}" array_no="6"/>
 	
 	

@@ -12,6 +12,10 @@
 		name="height"
 		default="0"
 	/>
+	<arg
+		name="gui"
+		default="true"
+	/>
 	<include file="$(find open_base)/launch/gazebo controller.launch">
 
 		<arg
@@ -21,6 +25,11 @@
 		<arg
 			name="height"
 			value="$(arg height)"
+		/>
+
+               <arg
+			name="gui"
+			value="$(arg gui)"
 		/>
 
 	</include>

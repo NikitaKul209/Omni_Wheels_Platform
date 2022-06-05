@@ -26,6 +26,7 @@ class Omni_Wheels_Platform():
             # Показания дальномеров
             self.dists = [0.] * 6
             self.orient = 0
+            self.position = 0
             self.sonar_topics = ['one_sonar','two_sonar','three_sonar','for_sonar','five_sonar','six_sonar']
 
 
@@ -55,9 +56,13 @@ class Omni_Wheels_Platform():
         def callback_links(self,msg):
             ind = msg.name.index('open_base::origin_link')
             pos = msg.pose[ind]
+            x = pos.position.x
+            y = pos.position.y
             z = pos.orientation.z
             w = pos.orientation.w
-            self.orient = int(math.atan2(z, w)*180/math.pi)
+            self.position=[x,y]
+
+            self.orient = int(math.atan2(z,w)*360/math.pi)
             if self.orient < 0:
                 self.orient = (self.orient + 360)
                 self.orient = int(self.orient)
