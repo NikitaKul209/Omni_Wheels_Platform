@@ -97,54 +97,54 @@ class Omni_Wheels_Platform():
         def Move_0_0_0(self):
             self.move_platform(0.0, 0.0, 0.0)
         def Move_0_0_L(self):
-            self.move_platform(0.0, 0.0, -0.5)
+            self.move_platform(0.0, 0.0, -0.3)
         def Move_0_0_R(self):
-            self.move_platform(0.0, 0.0, 0.5)
+            self.move_platform(0.0, 0.0, 0.3)
         def Move_0_L_0(self):
-            self.move_platform(0.0, -0.5, 0.0)
+            self.move_platform(0.0, -0.3, 0.0)
         def Move_0_R_0(self):
-            self.move_platform(0.0, 0.5, 0.0)
+            self.move_platform(0.0, 0.3, 0.0)
         def Move_0_L_L(self):
-            self.move_platform(0.0, -0.5, -0.5)
+            self.move_platform(0.0, -0.3, -0.3)
         def Move_0_R_R(self):
-            self.move_platform(0.0, 0.5, 0.5)
+            self.move_platform(0.0, 0.3, 0.3)
         def Move_0_L_R(self):
-            self.move_platform(0.0, -0.5, 0.5)
+            self.move_platform(0.0, -0.3, 0.3)
         def Move_0_R_L(self):
-            self.move_platform(0.0, 0.5, -0.5)
+            self.move_platform(0.0, 0.3, -0.3)
         def Move_L_0_0(self):
-            self.move_platform(-0.5,0.0,0.0)
+            self.move_platform(-0.3,0.0,0.0)
         def Move_R_0_0(self):
-            self.move_platform(0.5,0.0,0.0)
+            self.move_platform(0.3,0.0,0.0)
         def Move_L_0_L(self):
-            self.move_platform(-0.5,0.0,-0.5)
+            self.move_platform(-0.3,0.0,-0.3)
         def Move_R_0_R(self):
-            self.move_platform(0.5, 0.0, 0.5)
+            self.move_platform(0.3, 0.0, 0.3)
         def Move_L_0_R(self):
-            self.move_platform(-0.5,0.0,0.5)
+            self.move_platform(-0.3,0.0,0.3)
         def Move_R_0_L(self):
-            self.move_platform(0.5,0.0,-0.5)
+            self.move_platform(0.3,0.0,-0.3)
         def Move_L_L_0(self):
-            self.move_platform(-0.5,-0.5,0.0)
+            self.move_platform(-0.3,-0.3,0.0)
         def Move_R_R_0(self):
-            self.move_platform(0.5,0.5,0.0)
+            self.move_platform(0.3,0.3,0.0)
         def Move_L_R_0(self):
-            self.move_platform(-0.5,0.5,0.0)
+            self.move_platform(-0.3,0.3,0.0)
         def Move_R_L_0(self):
-            self.move_platform(0.5, -0.5, 0.0)
+            self.move_platform(0.3, -0.3, 0.0)
         def Move_L_L_L(self):
-            self.move_platform(-0.5, -0.5, -0.5)
+            self.move_platform(-0.3, -0.3, -0.3)
         def Move_R_R_R(self):
-            self.move_platform(0.5, 0.5, 0.5)
+            self.move_platform(0.3, 0.3, 0.3)
         def Move_L_L_R(self):
-            self.move_platform(-0.5, -0.5, 0.5)
+            self.move_platform(-0.3, -0.3, 0.3)
         def Move_R_R_L(self):
-            self.move_platform(0.5, 0.5, -0.5)
+            self.move_platform(0.3, 0.3, -0.3)
         def Move_L_R_R(self):
-            self.move_platform(-0.5, 0.5, 0.5)
+            self.move_platform(-0.3, 0.3, 0.3)
         def Move_R_L_L(self):
-            self.move_platform(0.5, -0.5, -0.5)
+            self.move_platform(0.3, -0.3, -0.3)
         def Move_L_R_L(self):
-            self.move_platform(-0.5, 0.5, -0.5)
+            self.move_platform(-0.3, 0.3, -0.3)
         def Move_R_L_R(self):
-            self.move_platform(0.5, -0.5, 0.5)
+            self.move_platform(0.3, -0.3, 0.3)
