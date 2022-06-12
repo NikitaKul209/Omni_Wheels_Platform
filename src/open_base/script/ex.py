@@ -112,10 +112,10 @@ def random_movement():
 
 def q_learning_training():
     start_time = datetime.now()
-    
-    # create environment
+
+
     env = CustomEnv()
-    # create q_table
+
     q_table = np.zeros([9 * len(env.possible_commands),
                         len(env.possible_actions)])
     # Hyperparameters

@@ -23,7 +23,7 @@ def find_state (number_of_states,current_or, goal_or):
                 relative_or = 1
                 break
 
-        if i+1>number_of_states-1:
+        if i+1>number_of_states:
             relative_or = number_of_states
             break
         elif (states[i].astype(int)) > (states[i+1].astype(int)):
@@ -48,7 +48,7 @@ def find_state (number_of_states,current_or, goal_or):
     # elif delta < 0 and abs(delta) <180:
     #     pass
 
-state = find_state(10,210,210)
+state = find_state(12,224,210)
 print(state)
  # assert(find_state(10, 45, )==...)
 
